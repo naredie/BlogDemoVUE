@@ -1,0 +1,11 @@
+<section id="content">
+    <h2 class="subheader" v-if="articles">Artículos encontrados</h2>
+        <h2 class="subheader" v-else>Sin resultados</h2>
+    
+    <div id="articles" v-if="articles">
+      <ArticulosComponent :articles="articles" />
+    </div>
+    <div v-else>
+    <h2>No hay resultados para tu busqueda</h2>
+    </div>
+  </section>

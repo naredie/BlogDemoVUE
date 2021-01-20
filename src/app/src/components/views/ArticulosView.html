@@ -1,0 +1,44 @@
+<div>
+    <div id="articulos" v-if="articles && articles.length >= 1">
+      <article
+        class="article-item"
+        id="article-template"
+        v-for="article in articles"
+        :key="article._id"
+      > 
+        <div class="image-wrap">
+          <img
+            :src="url + 'get-image/' + article.image"
+            :alt="article.name"
+            v-if="article.image"
+          />
+          <img
+            src="https://www.cuestalibros.com/content/images/thumbs/default-image_550.png"
+            :alt="article.name"
+            v-if="!article.image"
+          />
+        </div>
+     
+          <h2>
+            <router-link :to="{name: 'articulo', params:{id:article._id}}">
+            {{ article.title }}
+            </router-link>
+          </h2>
+        
+        <span class="date">
+          {{ article.date | moment('from','now')}}
+        </span>
+          <router-link :to="{name: 'articulo', params:{id:article._id}}">
+            Leer más
+            </router-link>
+        <!--LIMPiAR FLOTADOS. SE RECOMIENDA HACERLO SIEMPRE-->
+        <div class="clearfix"></div>
+      </article>
+    </div>
+    <div v-else-if="articles && articles.length < 1">
+      No hay articulos que mostrar
+    </div>
+    <div v-else>
+      Cargando...
+    </div>
+  </div>

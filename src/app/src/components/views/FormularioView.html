@@ -1,0 +1,39 @@
+<section id="content">
+    <h2 class="subheader">Formulario de contacto</h2>
+   <!--FORMULARIO-->
+   <form class="mid-form" @submit.prevent="mostrarUsuario">
+    <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" v-model="user.nombre" />
+        <div v-if="submitted && !$v.user.nombre.required " class="alerta">Este campo es requerido</div>
+        <div v-if="submitted && !$v.user.nombre.minLength " class="alerta">Este campo debe tener más caracteres</div>
+    </div>
+
+    <div class="form-group">
+        <label for="apellidos">Apellidos</label>
+        <input type="text" name="apellidos" v-model="user.apellidos"/>
+         <div v-if="submitted && !$v.user.apellidos.required " class="alerta">Este campo es requerido</div>
+          <div v-if="submitted && !$v.user.apellidos.minLength " class="alerta">Este campo debe tener más caracteres</div>
+    </div>
+
+    <div class="form-group radiobuttons">
+        <input type="radio" name="genero" value="hombre" v-model="user.genero" />Hombre
+        <input type="radio" name="genero" value="mujer" v-model="user.genero" />Mujer
+        <input type="radio" name="genero" value="otro" v-model="user.genero" />Otro
+    </div>
+
+    <!--LIMPiAR FLOTADOS. SE RECOMIENDA HACERLO SIEMPRE-->
+    <div class="clearfix"></div>
+
+    <div class="form-group">
+        <label for="descripcion">Mensaje</label>
+        <textarea name="descripcion" v-model="user.descripcion"></textarea>
+         <div v-if="submitted && !$v.user.descripcion.required " class="alerta">Este campo es requerido</div>
+         <div v-if="submitted && !$v.user.descripcion.minLength " class="alerta">Este campo debe tener más caracteres</div>
+    </div>
+
+    <input type="submit" value="Enviar" class="btn btn-success" />
+
+</form>
+ 
+</section>
